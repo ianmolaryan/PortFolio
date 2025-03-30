@@ -117,7 +117,7 @@ b{
     padding: 2.5rem;
     filter: grayscale(1);
     transition: all 1s;
-    animation: scaleImage 1500ms linear infinite;
+    animation: scaleImage 2200ms linear infinite;
 }
 @keyframes scaleImage
 {
@@ -137,7 +137,7 @@ b{
 }
 .user-image img
 {
-    height: 450px;
+    height: 475px;
 }
 
 /* Here is skill section code  */
@@ -224,7 +224,7 @@ b{
   background-color: #1e04b2;
 }
 .cplus{
-  width: 75%;
+  width: 10%;
   background-color: orange;
 }
 .python{
@@ -333,7 +333,7 @@ transition: 1s;
 }
 .edu-sec-item:hover{
   transform: scale(1.23);
-  transition : transform 0.2s ;
+  transition : all transform 0.1s ease-in-out;
   cursor: pointer;
 }
 .edu-section-right{
@@ -350,7 +350,7 @@ transition: 1s;
 .degree-container{
   position: relative;
   top: -36%;
-  right: -45%;
+  right: -35%;
 }
 
 .degree{
@@ -463,6 +463,27 @@ transition: 1s;
   padding-bottom: 40px;
   color: rgb(0, 0, 0);
 }
+.contact-sec-box:hover .card{
+  transform:scale(1.5);
+  transition: all 0.5s ease;
+
+}
+.contact-sec-box{
+  height: 900px;
+  width: 1600px;
+  position: relative;
+  
+}
+.Contacts-img
+{
+  height: 900px;
+  width: 1600px;
+  border-radius: 20px;
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  z-index: -1;
+}
 
 .contact-heading{
   text-align: center;
@@ -539,7 +560,7 @@ transition: 1s;
 }
 .btn-submit:hover{
   background-color: rgb(255, 255, 255);
-  transform: scale(1.05);
+  transform: scale(1.21);
   cursor: pointer;
 }
 input:focus,
@@ -561,7 +582,7 @@ button:focus {
 .footer a{
 
   color: black;
-  transition: 0.3s;
+  transition: 5s;
   
 }
 .footer a:hover{
