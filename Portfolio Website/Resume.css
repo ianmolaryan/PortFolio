@@ -198,7 +198,7 @@ b{
 }
 
 .html {
-  width: 90%;
+  width: 70%;
   background-color: #04AA6D;
 }
 
@@ -207,12 +207,19 @@ b{
   background-color: #2196F3;
 }
 
+.java
+{
+  width: 70%;
+  background-color: #46abca;
+}
+
 .js {
   width: 65%;
   background-color: #f44336;
 }
 
-.ml {
+.ml 
+{
   width: 60%;
   background-color: #1e04b2;
 }
@@ -225,7 +232,7 @@ b{
   background-color: palevioletred;
 }
 .ds{
-  width: 70%;
+  width: 60%;
   background-color: purple;
 }
 /* here is skill section right code  */
