@@ -1,315 +1,668 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anmol Aryan</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="Resume.css">
+    <title>Anmol Aryan | Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Typed.js for typing animation -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 </head>
-
 <body>
+    <!-- Custom Cursor -->
+    <div class="cursor-follower">
+        <div class="cursor-dot"></div>
+        <div class="cursor-ring"></div>
+    </div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress">
+        <div class="scroll-bar"></div>
+    </div>
+
+    <!-- Particle Background -->
+    <canvas id="particle-canvas"></canvas>
+
     <div class="wrapper">
         <div class="container">
-            <div class="navbar">
-                <div class="logo-container">
-                    <div class="logo-text" style="font-family: Georgia, 'Times New Roman', Times, serif;">Anmol Aryan</div>
+            <!-- Navbar -->
+            <nav id="navbar">
+                <div class="nav-container">
+                    <div class="logo-container">
+                        <div class="logo-text">Anmol Aryan</div>
+                    </div>
+
+                    <!-- Desktop Navigation -->
+                    <div class="desktop-nav">
+                        <a href="#home" class="nav-link active">Home</a>
+                        <a href="#skill" class="nav-link">Skill</a>
+                        <a href="#education" class="nav-link">Education</a>
+                        <a href="#project" class="nav-link">Project</a>
+                        <a href="#contact" class="nav-link">Contact</a>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <button class="mobile-menu-btn" aria-label="Toggle mobile menu">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                    </button>
                 </div>
-                <div class="nav-items">
-                    <div><a href="#home">Home</a></div>
-                    <div><a href="#skill">Skills</a></div>
-                    <div><a href="#education">Education</a></div>
-                    <div><a href="#project">Project</a></div>
-                    <div><a href="#contact">Contact</a></div>
+
+                <!-- Mobile Navigation -->
+                <div class="mobile-nav">
+                    <a href="#home" class="nav-link active">Home</a>
+                    <a href="#skill" class="nav-link">Skill</a>
+                    <a href="#education" class="nav-link">Education</a>
+                    <a href="#project" class="nav-link">Project</a>
+                    <a href="#contact" class="nav-link">Contact</a>
                 </div>
-            </div>
-            <div class="home-section" id="home">
-                <div class="faded-text">About me :</div>
+            </nav>
+
+            <!-- Home Section -->
+            <section id="home" class="section">
+                <div class="about-me-text">About me :</div>
+
                 <div class="home-section-left">
-                    <div class="home-section-heading">Hi! This is me!</div>
-                    <div class="home-section-sub-heading">
+                    <h1 class="home-title">
+                        Hi! This is <span class="highlight">me!</span>
+                    </h1>
+
+                    <div class="role-container">
                         I am <span class="role"></span>
                     </div>
-                    <div class="home-section-discription">
-                        "Hi, I'm Anmol Aryan from Patna, Bihar. I studied at <b> Christ Church High School
-                        </b> & <b> New Era Public School </b>. Now pursuing <b> B.Tech in Electronics & Communication Engineering </b>
-                        at <b> Haldia Institute of Technology </b>, Haldia, West Bengal. I enjoy studying, coding, playing chess, solving Rubix cube, reading books, and exploring
-                        space in my free time."
+
+                    <div class="home-description">
+                        "Hi, I'm Anmol Aryan from Patna, Bihar. I studied at
+                        <span class="highlight-text">Christ Church High School</span> &amp;
+                        <span class="highlight-text">New Era Public School</span>. Now pursuing
+                        <span class="highlight-text">B.Tech in Electronics &amp; Communication Engineering</span> at
+                        <span class="highlight-text">Haldia Institute of Technology</span>, Haldia, West Bengal. I enjoy
+                        studying, coding, playing chess, solving Rubix cube, reading books, and exploring space in my free time."
                     </div>
-                    <div class="btn" id="btn">Hire Me</div>
+
+                    <div class="button-group">
+                        <button class="btn btn-primary">
+                            Hire Me
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="arrow-icon"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </button>
+                        
+                        <button class="btn btn-outline">
+                            Download CV
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="download-icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                        </button>
+                    </div>
                 </div>
+
                 <div class="home-section-right">
-                    <div class="user-image" style="border-radius: 30px;">
-                        <img src="myimage.jpeg" alt="" style="border-radius: 20px;">
+                    <div class="user-image">
+                        <img src="myimage.jpeg" alt="Anmol Aryan">
+                        <div class="image-overlay"></div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="skill-section" id="skill">
-            <h1 class="skill-heading"><i class="fa-solid fa-chalkboard-user"></i> Skills</h1>
 
-            
-            <h1 class="skill-section-heading">Technical Proficiencies</h1>
-            <div class="skill-container">
+                <!-- Background decorative elements -->
+                <div class="bg-blob bg-blob-1"></div>
+                <div class="bg-blob bg-blob-2"></div>
+                <div class="bg-blob bg-blob-3"></div>
+            </section>
 
-                <div class="skill-section-left">
+            <!-- Skills Section -->
+            <section id="skill" class="section">
+                <h2 class="section-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="section-icon"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <span>Skills</span>
+                </h2>
 
-                    <div class="skill-bar">
-                        <p>HTML</p>
-                        <div class="skill-box">
-                            <div class="skills html">70%</div>
+                <h3 class="section-subtitle">Technical Proficiencies</h3>
+
+                <div class="skills-container">
+                    <div class="skill-section-left">
+                        <div class="skill-bar">
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <p>HTML</p>
+                                    <p class="skill-percentage">90%</p>
+                                </div>
+                                <div class="skill-box">
+                                    <div class="skills bg-orange" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <p>CSS</p>
+                                    <p class="skill-percentage">80%</p>
+                                </div>
+                                <div class="skill-box">
+                                    <div class="skills bg-blue" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <p>JavaScript</p>
+                                    <p class="skill-percentage">65%</p>
+                                </div>
+                                <div class="skill-box">
+                                    <div class="skills bg-yellow" style="width: 65%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <p>Machine Learning</p>
+                                    <p class="skill-percentage">60%</p>
+                                </div>
+                                <div class="skill-box">
+                                    <div class="skills bg-purple" style="width: 60%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <p>C++</p>
+                                    <p class="skill-percentage">80%</p>
+                                </div>
+                                <div class="skill-box">
+                                    <div class="skills bg-cyan" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <p>Python</p>
+                                    <p class="skill-percentage">65%</p>
+                                </div>
+                                <div class="skill-box">
+                                    <div class="skills bg-green" style="width: 65%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <p>Data Structure</p>
+                                    <p class="skill-percentage">60%</p>
+                                </div>
+                                <div class="skill-box">
+                                    <div class="skills bg-red" style="width: 60%"></div>
+                                </div>
+                            </div>
                         </div>
+                    </div>
 
-                        <p>CSS</p>
-                        <div class="skill-box">
-                            <div class="skills css">80%</div>
-                        </div>
-
-                        <p>JavaScript</p>
-                        <div class="skill-box">
-                            <div class="skills js">65%</div>
-                        </div>
-
-                        <p>Machine Learning</p>
-                        <div class="skill-box">
-                            <div class="skills ml">60%</div>
-                        </div>
-
-                        <p>C++</p>
-                        <div class="skill-box">
-                            <div class="skills cplus">10%</div>
-                        </div>
-
-                        <p>Python</p>
-                        <div class="skill-box">
-                            <div class="skills python">65%</div>
-                        </div>
-                        <p>Java</p>
-                        <div class="skill-box">
-                            <div class="skills java">70%</div>
-                        </div>
-
-                        <p>Data Structure</p>
-                        <div class="skill-box">
-                            <div class="skills ds">60%</div>
+                    <div class="skill-section-right">
+                        <div class="skill-logo-container">
+                            <div class="skill-logo-wrapper">
+                                <div class="skill-logo">
+                                    <img src="skill-logo/html.png" alt="HTML">
+                                </div>
+                                <p class="skill-logo-name">HTML</p>
+                            </div>
+                            <div class="skill-logo-wrapper">
+                                <div class="skill-logo">
+                                    <img src="skill-logo/css.png" alt="CSS">
+                                </div>
+                                <p class="skill-logo-name">CSS</p>
+                            </div>
+                            <div class="skill-logo-wrapper">
+                                <div class="skill-logo">
+                                    <img src="skill-logo/js.png" alt="JavaScript">
+                                </div>
+                                <p class="skill-logo-name">JavaScript</p>
+                            </div>
+                            <div class="skill-logo-wrapper">
+                                <div class="skill-logo">
+                                    <img src="skill-logo/ml.png" alt="Machine Learning">
+                                </div>
+                                <p class="skill-logo-name">Machine Learning</p>
+                            </div>
+                            <div class="skill-logo-wrapper">
+                                <div class="skill-logo">
+                                    <img src="skill-logo/cplus.png" alt="C++">
+                                </div>
+                                <p class="skill-logo-name">C++</p>
+                            </div>
+                            <div class="skill-logo-wrapper">
+                                <div class="skill-logo">
+                                    <img src="skill-logo/python.png" alt="Python">
+                                </div>
+                                <p class="skill-logo-name">Python</p>
+                            </div>
+                            <!-- <div class="skill-logo-wrapper">
+                                <div class="skill-logo">
+                                    <img src="skill-logo/reac" alt="React">
+                                </div>
+                                <p class="skill-logo-name">React</p>
+                            </div> -->
+                            <!-- <div class="skill-logo-wrapper">
+                                <div class="skill-logo">
+                                    <img src="https://via.placeholder.com/80" alt="Tailwind">
+                                </div>
+                                <p class="skill-logo-name">Tailwind</p>
+                            </div> -->
+                            <div class="skill-logo-wrapper">
+                                <div class="skill-logo">
+                                    <img src="skill-logo/github.png" alt="GitHub">
+                                </div>
+                                <p class="skill-logo-name">GitHub</p>
+                            </div>
+                            <div class="skill-logo-wrapper">
+                                <div class="skill-logo">
+                                    <img src="skill-logo/c.png" alt="C">
+                                </div>
+                                <p class="skill-logo-name">C</p>
+                            </div>
+                            <div class="skill-logo-wrapper">
+                                <div class="skill-logo">
+                                    <img src="skill-logo/shell.png" alt="Shell">
+                                </div>
+                                <p class="skill-logo-name">Shell</p>
+                            </div>
+                            <div class="skill-logo-wrapper">
+                                <div class="skill-logo">
+                                    <img src="skill-logo/linux.png" alt="Linux">
+                                </div>
+                                <p class="skill-logo-name">Linux</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="skill-section-right">
-                    <div class="skill-logo-container">
-                        <img src="skill-logo/html.png" class="skill-logo">
-                        <img src="skill-logo/css.png" class="skill-logo">
-                        <img src="skill-logo/js.png" class="skill-logo">
-                        <img src="skill-logo/ml.png" class="skill-logo">
-                        <img src="skill-logo/cplus.png" class="skill-logo">
-                        <img src="skill-logo/python.png" class="skill-logo">
-                        <img src="skill-logo/github.png" class="skill-logo">
-                        <img src="skill-logo/c.png" class="skill-logo">
-                        <img src="skill-logo/shell.png" class="skill-logo">
-                        <img src="skill-logo/linux.png" class="skill-logo">
-                        <img src="skill-logo/java.png" class="skill-logo">
+
+                <!-- Background decorative elements -->
+                <div class="bg-blob bg-blob-4"></div>
+            </section>
+
+            <!-- Education Section -->
+            <section id="education" class="section">
+                <h2 class="section-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="section-icon"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                    <span>Education</span>
+                </h2>
+
+                <div class="education-container">
+                    <!-- 3D Cube -->
+                    <div class="cube-wrapper">
+                        <div class="cube-scene">
+                            <div class="cube" id="education-cube">
+                                <!-- Front Face -->
+                                <div class="cube-face front">
+                                    <div class="cube-content">
+                                        <h3>2019-2020</h3>
+                                        <h2>Christ Church High School</h2>
+                                        <p>Matriculation</p>
+                                    </div>
+                                </div>
+
+                                <!-- Right Face -->
+                                <div class="cube-face right">
+                                    <div class="cube-content">
+                                        <h3>2020-2022</h3>
+                                        <h2>New Era Public School</h2>
+                                        <p>Intermediate</p>
+                                    </div>
+                                </div>
+
+                                <!-- Back Face -->
+                                <div class="cube-face back">
+                                    <div class="cube-content">
+                                        <h3>2023-2027</h3>
+                                        <h2>Haldia Institute of Technology</h2>
+                                        <p>B.Tech in ECE</p>
+                                    </div>
+                                </div>
+
+                                <!-- Left Face -->
+                                <div class="cube-face left">
+                                    <div class="cube-content">
+                                        <h3>Skills Gained</h3>
+                                        <p>Web Development</p>
+                                        <p>Machine Learning</p>
+                                        <p>Programming</p>
+                                    </div>
+                                </div>
+
+                                <!-- Top Face -->
+                                <div class="cube-face top">
+                                    <div class="cube-content">
+                                        <h3>Achievements</h3>
+                                        <p>Dean's List</p>
+                                        <p>Hackathon Winner</p>
+                                        <p>Research Publication</p>
+                                    </div>
+                                </div>
+
+                                <!-- Bottom Face -->
+                                <div class="cube-face bottom">
+                                    <div class="cube-content">
+                                        <h3>Future Goals</h3>
+                                        <p>Master's Degree</p>
+                                        <p>Industry Experience</p>
+                                        <p>Research Contribution</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cube-instruction">
+                            <p>Hover over the cube to interact</p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline -->
+                    <div class="education-timeline">
+                        <div class="timeline-container">
+                            <div class="timeline-item">
+                                <div class="timeline-marker">
+                                    <div class="timeline-marker-inner"></div>
+                                </div>
+                                <div class="timeline-content">
+                                    <div class="timeline-year">2019-2020</div>
+                                    <h3 class="timeline-school">Christ Church High School</h3>
+                                    <div class="timeline-degree">Matriculation</div>
+                                    <p class="timeline-description">
+                                        Completed my 10th standard education with excellent grades and developed a strong foundation in science and mathematics.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="timeline-item">
+                                <div class="timeline-marker">
+                                    <div class="timeline-marker-inner"></div>
+                                </div>
+                                <div class="timeline-content">
+                                    <div class="timeline-year">2020-2022</div>
+                                    <h3 class="timeline-school">New Era Public School</h3>
+                                    <div class="timeline-degree">Intermediate</div>
+                                    <p class="timeline-description">
+                                        Completed my 12th standard with focus on Physics, Chemistry and Mathematics, preparing for engineering entrance exams.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="timeline-item">
+                                <div class="timeline-marker">
+                                    <div class="timeline-marker-inner"></div>
+                                </div>
+                                <div class="timeline-content">
+                                    <div class="timeline-year">2023-2027</div>
+                                    <h3 class="timeline-school">Haldia Institute of Technology</h3>
+                                    <div class="timeline-degree">B.Tech in ECE</div>
+                                    <p class="timeline-description">
+                                        Currently pursuing Bachelor's degree in Electronics and Communication Engineering, exploring various technologies and building projects.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Timeline line -->
+                            <div class="timeline-line"></div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="education-section" id="education">
-            <h1 class="education-heading"><i class="fa-solid fa-graduation-cap"></i> Education</h1>
-            <div class="education-section-container">
-                <div class="edu-section-left">
-                    <div class="edu-sec-item item1">
-                        <div class="logo">
-                            <img src="education-logo/cchslogo.png" alt="">
-                        </div>
-                        <div class="degree-container">
-                            <div class="degree">Matriculation</div>
-                            <div class="institute">Christ Church High School</div>
-                            <div class="date">2019-2020</div>
-                        </div>
-                        <div class="degree-disc">I did my matriculation from Christ Church High School located in Kadamkuan, Patna, Bihar.</div>
-                    </div>
-                    <div class="edu-sec-item item2">
-                        <div class="logo">
-                            <img src="education-logo/hit.png" alt="">
-                        </div>
-                        <div class="degree-container">
-                            <div class="degree">B.Tech</div>
-                            <div class="institute">Haldia Institute of Technology</div>
-                            <div class="date">2023-2027</div>
-                        </div>
-                        <div class="degree-disc">Pursuing my Engineering undergrad degree at Haldia Institute of Technology, Haldia, West Bengal.</div>
-                    </div>
-                </div>
-                <!-- code for timeline  -->
-                <div class="bubble">
-                    <i class="fa-solid fa-circle"></i>
-                    <i class="fa-solid fa-circle"></i>
-                    <i class="fa-solid fa-circle"></i>
-                </div>
-               
-                <div class="edu-section-right">
-                    <div class="edu-sec-item item3">
-                        <div class="logo">
-                            <img src="education-logo/neps logo.jpg" alt="">
-                        </div>
-                        <div class="degree-container">
-                            <div class="degree">Intermediate</div>
-                            <div class="institute">New Era Public School</div>
-                            <div class="date">2020-2022</div>
-                        </div>
-                        <div class="degree-disc">I did my Intermediate from New Era Public School located in Kankarbagh, Patna, Bihar.</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="project-section" id="project">
-            <h1 class="project-heading"><i class="fa-solid fa-book"></i> Projects</h1>
-            <div class="project-section-container">
+
+                <!-- Background decorative elements -->
+                <div class="bg-blob bg-blob-5"></div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="project" class="section">
+                <h2 class="section-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="section-icon"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/><path d="M8 7h6"/><path d="M8 11h8"/></svg>
+                    <span>Projects</span>
+                </h2>
+
+                <div class="project-section-container">
                     <div class="project-sec-box">
                         <div class="card">
                             <div class="card-front">
-                                <img src="project-img/water-now.JPG" class="project-img">
+                                <img src="https://via.placeholder.com/400x300" alt="Water Now">
+                                <div class="card-front-overlay">
+                                    <h3>Water Now</h3>
+                                </div>
                             </div>
                             <div class="card-back">
-                                <h1>Water Now</h1>
-                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus delectus, inventore ipsum, magnam iste expedita animi earum alias sed ullam temporibus rerum nobis dignissimos veritatis ipsam, cupiditate placeat est accusamus dolorem iure natus dicta repellat vel dolores. Nulla, explicabo! Error eligendi quos rerum optio dolorem laboriosam eum eos vero fugiat. 
-                                    <br>
-                                    <button class="btn-know-more" type="button">Know More <i class="fa-solid fa-arrow-trend-up"></i> </button>
-                                </p>
+                                <h3>Water Now</h3>
+                                <p>A web application that helps users track their daily water intake and sends reminders to stay hydrated throughout the day.</p>
+                                <div class="project-tags">
+                                    <span class="project-tag">React</span>
+                                    <span class="project-tag">Firebase</span>
+                                    <span class="project-tag">Tailwind CSS</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link" aria-label="View GitHub repository">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                                    </a>
+                                    <a href="#" class="project-link" aria-label="View live project">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+                                    </a>
+                                    <button class="btn-know-more">
+                                        Know More
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 7 10 10"/><path d="M17 7v10H7"/></svg>
+                                    </button>
+                                </div>
                             </div>
-                        </div> 
+                        </div>
                     </div>
-                    <div class="project-sec-box">
-                        <div class="card">
-                            <div class="card-front">
-                                <img src="project-img/periodic-table.JPG" class="project-img">
-                            </div>
-                            <div class="card-back">
-                                <h1>Periodic Table</h1>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium perferendis quasi modi aliquid labore cum id architecto quidem molestiae illo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                                    <br>
-                                    <button class="btn-know-more" type="button">Know More <i class="fa-solid fa-arrow-trend-up"></i> </button>
-                                </p>
-                            </div>
-                        </div> 
-                    </div>
-                    <div class="project-sec-box">
-                        <div class="card">
-                            <div class="card-front">
-                                <img src="project-img/parallax-home.JPG" class="project-img">
-                            </div>
-                            <div class="card-back">
-                                <h1>Parallax Effect</h1>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium perferendis quasi modi aliquid labore cum id architecto quidem molestiae illo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                                    <br>
-                                    <button class="btn-know-more" type="button">Know More <i class="fa-solid fa-arrow-trend-up"></i> </button>
-                                </p>
-                            </div>
-                        </div> 
-                    </div>
-                    <div class="project-sec-box">
-                        <div class="card">
-                            <div class="card-front">
-                                <img src="project-img/flex-box-game.JPG" class="project-img">
-                            </div>
-                            <div class="card-back">
-                                <h1>Flex Box Game</h1>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium perferendis quasi modi aliquid labore cum id architecto quidem molestiae illo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                                    <br>
-                                    <button class="btn-know-more" type="button">Know More <i class="fa-solid fa-arrow-trend-up"></i> </button>
-                                </p>
-                            </div>
-                        </div> 
-                    </div>
-                
-                
-            </div>
-        </div>
-        <div class="Contact-section" id="Contacts">
-            <h1 class="project-heading"><i class="fa-solid fa-book"></i> My Socials</h1>
-            <div class="project-section-container">
-                    <div class="contact-sec-box">
-                        <div class="card">
-                            <div class="card-front">
-                                <img src="Contacts-img/Insta.PNG" class="Contact-section>
-                               </div>
-                                <div>
-                                    <button class="btn-know-more" type="button">Know More <i class="fa-solid fa-arrow-trend-up"></i> </button>
 
-                            </div>
-                        </div> 
-                    </div>
-                    <div class="contact-sec-box">
+                    <div class="project-sec-box">
                         <div class="card">
                             <div class="card-front">
-                                <img src="Contacts-img/Linkedin.PNG" class="Contact-section">
+                                <img src="https://via.placeholder.com/400x300" alt="Periodic Table">
+                                <div class="card-front-overlay">
+                                    <h3>Periodic Table</h3>
+                                </div>
                             </div>
-                            <div>
-                                    <button class="btn-know-more" type="button">Know More <i class="fa-solid fa-arrow-trend-up"></i> </button>
+                            <div class="card-back">
+                                <h3>Periodic Table</h3>
+                                <p>An interactive periodic table with detailed information about each element, including properties, uses, and discovery history.</p>
+                                <div class="project-tags">
+                                    <span class="project-tag">JavaScript</span>
+                                    <span class="project-tag">HTML</span>
+                                    <span class="project-tag">CSS</span>
+                                    <span class="project-tag">API</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link" aria-label="View GitHub repository">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                                    </a>
+                                    <a href="#" class="project-link" aria-label="View live project">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+                                    </a>
+                                    <button class="btn-know-more">
+                                        Know More
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 7 10 10"/><path d="M17 7v10H7"/></svg>
+                                    </button>
+                                </div>
                             </div>
-                        </div> 
+                        </div>
                     </div>
-            </div>
-        </div>
-        <div class="contact-section" id="contact">
-            <h1 class="contact-heading"><i class="fa-regular fa-address-card"></i> Contact</h1>
-            <div class="contact-container">
-                <div class="contact-sec-left">
-                    <h3>Get In Touch</h3>
-                    <p>If you all loved my profile , and was pleased by going through my site then please contact me to
-                        work with you all it would be my pleasure to work with you all. Thanks :)</p>
-                    <h3>My Address</h3>
-                    <h4><i class="fa-solid fa-location-dot"> </i> Haldia, India</h4>
-                    <h4><i class="fa-solid fa-mobile-screen-button"></i> +91620xxx0656</h4>
-                    <h4><i class="fa-solid fa-envelope"></i> anmol1aryan2@gmail.com</h4>
+
+                    <div class="project-sec-box">
+                        <div class="card">
+                            <div class="card-front">
+                                <img src="https://via.placeholder.com/400x300" alt="Parallax Effect">
+                                <div class="card-front-overlay">
+                                    <h3>Parallax Effect</h3>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <h3>Parallax Effect</h3>
+                                <p>A showcase website demonstrating various parallax scrolling effects and animations using modern web technologies.</p>
+                                <div class="project-tags">
+                                    <span class="project-tag">GSAP</span>
+                                    <span class="project-tag">JavaScript</span>
+                                    <span class="project-tag">HTML</span>
+                                    <span class="project-tag">CSS</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link" aria-label="View GitHub repository">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                                    </a>
+                                    <a href="#" class="project-link" aria-label="View live project">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+                                    </a>
+                                    <button class="btn-know-more">
+                                        Know More
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" view Box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 7 10 10"/><path d="M17 7v10H7"/></svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-sec-box">
+                        <div class="card">
+                            <div class="card-front">
+                                <img src="https://via.placeholder.com/400x300" alt="Flex Box Game">
+                                <div class="card-front-overlay">
+                                    <h3>Flex Box Game</h3>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <h3>Flex Box Game</h3>
+                                <p>An educational game that teaches CSS Flexbox concepts through interactive challenges and visual feedback.</p>
+                                <div class="project-tags">
+                                    <span class="project-tag">React</span>
+                                    <span class="project-tag">CSS</span>
+                                    <span class="project-tag">JavaScript</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link" aria-label="View GitHub repository">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                                    </a>
+                                    <a href="#" class="project-link" aria-label="View live project">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+                                    </a>
+                                    <button class="btn-know-more">
+                                        Know More
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 7 10 10"/><path d="M17 7v10H7"/></svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="contact-sec-right">
-                    <form class="form-container">
-                        <input type="text" placeholder="Name" class="form-input">
-                        <input type="email" placeholder="Email" class="form-input">
-                        <textarea name="" id="" cols="40" rows="2" placeholder="Message"
-                            class="form-text-area"></textarea>
-                        <button class="btn-submit" type="button">Send Message</button>
-                    </form>
+
+                <!-- Background decorative elements -->
+                <div class="bg-blob bg-blob-6"></div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="section">
+                <h2 class="section-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="section-icon"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/><path d="M6 15h1"/><path d="M11 15h2"/></svg>
+                    <span>Contact</span>
+                </h2>
+
+                <div class="contact-container">
+                    <div class="contact-sec-left">
+                        <h3 class="contact-heading">Get In Touch</h3>
+                        <p class="contact-description">
+                            If you loved my profile and were pleased by my site, please contact me. I'd be happy to collaborate. Thanks :)
+                        </p>
+
+                        <h3 class="contact-heading">My Address</h3>
+                        <div class="contact-info">
+                            <div class="contact-info-item">
+                                <div class="contact-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                                </div>
+                                <h4>Haldia, India</h4>
+                            </div>
+
+                            <div class="contact-info-item">
+                                <div class="contact-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                </div>
+                                <h4>+916206070656</h4>
+                            </div>
+
+                            <div class="contact-info-item">
+                                <div class="contact-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                                </div>
+                                <h4>anmol1aryan2@gmail.com</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-sec-right">
+                        <form class="form-container">
+                            <div class="form-group">
+                                <input type="text" placeholder="Name" class="form-input">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="email" placeholder="Email" class="form-input">
+                            </div>
+
+                            <div class="form-group">
+                                <textarea placeholder="Message" class="form-textarea"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-full">
+                                Send Message
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                            </button>
+                        </form>
+                    </div>
                 </div>
-            </div>
-            <div class="footer">
-                <a href="https://www.linkedin.com/in/hansrew-undefined-5b38b0263/" target="_blank"><i
-                        class="fa-brands fa-linkedin-in"></i></a>
-                <a href="https://www.facebook.com/ianmolaryan/" target="_blank"><i
-                        class="fa-brands fa-facebook-f"></i></a>
-                <a href="https://wa.me/916206070656" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-                <a href="mailto:anmol1aryan2@gmail.com" target="_blank"><i
-                        class="fa-brands fa-google-plus-g"></i></a>
-                <a href="https://www.dinstagram.com/ianmolaryan" target="_blank"><i
-                        class="fa-brands fa-instagram"></i></a>
-            </div>
+
+                <!-- Background decorative elements -->
+                <div class="bg-blob bg-blob-7"></div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="social-links">
+                    <a href="www.linkedin.com/in/ianmolaryan" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <img src="social-img\linkedin.png" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                    </a>
+                    <a href="https://www.facebook.com/ianmolaryan/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                        <img src="social-img\fb.png" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                    <a href="https://wa.me/916206070656" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                        <img src="social-img\wp.png" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                    </a>
+                    <a href="mailto:anmol1aryan2@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email">
+                        <img src="social-img\gmail.png" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/ianmolaryan" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <img src="social-img\insta.png" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                    </a>
+                </div>
+                <script>
+                    var typeData = new Typed(".role", 
+                    {
+                        strings:
+                        [
+                            "Frontend Developer",
+                            "Web Designer", 
+                            "Software Engineer",
+                            "Data Science Enthusiast",
+                            "Machine Learning Enthusiast",
+                            "AI Enthusiast",
+                            "Student",
+                            "Coder",
+                        ],
+                        loop: true,
+                        typeSpeed: 10,
+                        backSpeed: 8,
+                        backDelay: 1500,
+                    });
+                </script>
+                <div class="cursor-follower fixed pointer-events-none z-50 transition-opacity duration-300">
+                    <div class="cursor-dot absolute rounded-full bg-teal-400 transition-all duration-150"></div>
+                    <div class="cursor-ring absolute rounded-full border border-teal-400 transition-all duration-200 ease-out"></div>
+                </div>
+
+                <div class="copyright">
+                    <p>&copy; <span id="current-year"></span> Anmol Aryan. All rights reserved.</p>
+                </div>
+            </footer>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <script src="https://kit.fontawesome.com/58a810656e.js" crossorigin="anonymous"></script>
-    <script>
-        var typeData = new Typed(".role", 
-        {
-            strings:
-            [
-                "Frontend Developer",
-                "Web Designer", 
-                "Software Engineer",
-                "Data Science Enthusiast",
-                "Machine Learning Enthusiast",
-                "AI Enthusiast",
-                "Student",
-                "Coder",
-            ],
-            loop: true,
-            typeSpeed: 10,
-            backSpeed: 8,
-            backDelay: 3000,
-        });
-    </script>
+
+    <!-- JavaScript files -->
+    <script src="js/cursor.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/scroll-progress.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
-
