@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('mouseover', () => {
         cursor.style.opacity = '1';
     });
-    
     // Expand cursor on clickable elements
     const clickables = document.querySelectorAll('a, button, .btn, .nav-items div, .skill-logo, .edu-sec-item, .card, input, textarea');
     
