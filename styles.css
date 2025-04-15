@@ -622,93 +622,18 @@
     }
   }
   
-  .skill-section-left {
-    width: 100%;
-  }
-  
-  @media (min-width: 768px) {
-    .skill-section-left {
-      width: 50%;
-    }
-  }
-  
-  .skill-bar {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  
-  .skill-item {
-    width: 100%;
-  }
-  
-  .skill-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.5rem;
-  }
-  
-  .skill-percentage {
-    color: var(--teal-400);
-  }
-  
-  .skill-box {
-    height: 0.5rem;
-    background-color: var(--slate-700);
-    border-radius: 9999px;
-    overflow: hidden;
-  }
-  
-  .skills {
-    height: 100%;
-    border-radius: 9999px;
-    animation: fillBar 2s ease-out forwards;
-  }
-  
-  @keyframes fillBar {
-    from {
-      width: 0;
-    }
-    to {
-      width: 100%;
-    }
-  }
-  
-  .bg-orange {
-    background-color: #f97316;
-  }
-  
-  .bg-blue {
-    background-color: #3b82f6;
-  }
-  
-  .bg-yellow {
-    background-color: #eab308;
-  }
-  
-  .bg-purple {
-    background-color: #a855f7;
-  }
-  
-  .bg-cyan {
-    background-color: #06b6d4;
-  }
-  
-  .bg-green {
-    background-color: #22c55e;
-  }
-  
-  .bg-red {
-    background-color: #ef4444;
-  }
   
   .skill-section-right {
     width: 100%;
+    max-width: 600px; /* or any width you want */
+  margin: 0 auto; 
+  display : flex;
   }
   
   @media (min-width: 768px) {
     .skill-section-right {
-      width: 50%;
+      width: 100%;
+      
     }
   }
   
