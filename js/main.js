@@ -54,18 +54,33 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Handle image parallax effect
     const userImage = document.querySelector('.user-image');
+    let isHovering = false;
     
+   
     if (userImage) {
+        // Detect hover
+        userImage.addEventListener('mouseenter', () => {
+            isHovering = true;
+            userImage.style.transform = 'scale(1.05)';
+        });
+    
+        userImage.addEventListener('mouseleave', () => {
+            isHovering = false;
+            userImage.style.transform = 'scale(1)';
+        });
+    
         document.addEventListener('mousemove', (e) => {
+            if (isHovering) return;
+    
             const { clientX, clientY } = e;
             const { innerWidth, innerHeight } = window;
-            
-            // Calculate mouse position as percentage of screen
+    
             const x = clientX / innerWidth - 0.5;
             const y = clientY / innerHeight - 0.5;
-            
-            // Apply parallax effect (subtle movement)
-            userImage.style.transform = `perspective(1000px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg) scale3d(1.05, 1.05, 1.05)`;
+    
+            // Combine hover pop + rotation
+            userImage.style.transform = `perspective(1000px) rotateY(${x * 15}deg) rotateX(${-y * 15}deg) `;
         });
     }
+    
 });
