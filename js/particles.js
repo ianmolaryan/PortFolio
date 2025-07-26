@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     {
         x: 0,
         y: 0,
-        radius: 200
+        radius: 150
     };
     
     // Resize canvas to fill window
@@ -20,10 +20,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize particles
     function initParticles() {
         particles = [];
-        const numberOfParticles = Math.min(Math.floor((canvas.width * canvas.height) / 900), 150);
+        const numberOfParticles = Math.min(Math.floor((canvas.width * canvas.height) / 900), 250);
         
         for (let i = 0; i < numberOfParticles; i++) {
-            const size = Math.random() * 2 + 0.5;
+            const size = Math.random() * 2.59 + 0.1;
             const x = Math.random() * (canvas.width - size * 2);
             const y = Math.random() * (canvas.height - size * 2);
             const speedX = Math.random() * 0.25 - 0.25;
@@ -31,10 +31,19 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Teal and cyan color variations
             const colors = [
+               
+                'rgba(241, 245, 244, 0.7)', // teal-500
+                'rgba(22, 216, 241, 0.7)', // cyan-300
+                'rgba(36, 53, 56, 0.7)', 
                 'rgba(45, 212, 191, 0.7)', // teal-400
                 'rgba(20, 184, 166, 0.7)', // teal-500
                 'rgba(103, 232, 249, 0.7)', // cyan-300
                 'rgba(6, 182, 212, 0.7)',  // cyan-500
+                'rgba(52, 243, 218, 0.7)', // teal-400
+                'rgba(14, 97, 87, 0.7)', // teal-500
+                'rgba(22, 216, 241, 0.7)', // cyan-300
+                'rgba(22, 86, 97, 0.7)', 
+                'rgba(16, 241, 211, 0.7)', // teal-400
             ];
             
             const color = colors[Math.floor(Math.random() * colors.length)];
@@ -58,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const dy = particles[i].y - particles[j].y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
                 
-                if (distance < 150) {
+                if (distance < 50) {
                     ctx.beginPath();
                     ctx.strokeStyle = `rgba(20, 184, 166, ${0.1 - distance / 1500})`;
                     ctx.lineWidth = 0.75;
@@ -93,8 +102,8 @@ document.addEventListener('DOMContentLoaded', function() {
             if (distance < mouse.radius) {
                 const angle = Math.atan2(dy, dx);
                 const force = (mouse.radius - distance) / mouse.radius;
-                p.speedX += Math.cos(angle) * force * 0.1;
-                p.speedY += Math.sin(angle) * force * 0.1;
+                p.speedX += Math.cos(angle) * force * 0.071;
+                p.speedY += Math.sin(angle) * force * 0.071;
                 
                 // Limit speed
                 const speed = Math.sqrt(p.speedX * p.speedX + p.speedY * p.speedY);
@@ -126,5 +135,5 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize
     resizeCanvas();
-    animate();
+     animate();// 
 });

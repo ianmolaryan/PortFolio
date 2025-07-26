@@ -1181,8 +1181,10 @@
   }
   
   .social-links a:hover {
-    background-color: var(--teal-500);
-    transform: scale(1.1);
+    filter: drop-shadow(0 0 5px var(--teal-400));
+    background-color: rgba(28, 250, 231, 0.548);
+    transform: scale(1.231);
+    
   }
   
   .copyright {
