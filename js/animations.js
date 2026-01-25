@@ -1,17 +1,17 @@
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Typed from 'typed.js';
+// global gsap, ScrollTrigger, Typed
 
 function initAnimations() {
     gsap.registerPlugin(ScrollTrigger);
 
-    new Typed('.role', {
-        strings: ["Frontend Developer", "Web Developer", "Student", "Backend Developer", "Coder"],
-        loop: true,
-        typeSpeed: 50,
-        backSpeed: 30,
-        backDelay: 1000,
-    });
+    if (document.querySelector('.role')) {
+        new Typed('.role', {
+            strings: ["Frontend Developer", "Web Developer", "Student", "Backend Developer", "Coder"],
+            loop: true,
+            typeSpeed: 50,
+            backSpeed: 30,
+            backDelay: 1000,
+        });
+    }
 
     gsap.from(".home-section-left", {
         scrollTrigger: { trigger: "#home", start: "top 80%", toggleActions: "play none none none" },
@@ -68,21 +68,25 @@ function initAnimations() {
         opacity: 0, y: 20, duration: 0.5, stagger: 0.1, ease: "back.out(1.7)",
     });
 
+    // 3D Cube Rotation on Scroll
     const cube = document.getElementById('education-cube');
     const cubeWrapper = document.querySelector('.cube-wrapper');
 
     if (cube && cubeWrapper) {
-        cubeWrapper.addEventListener('mousemove', (e) => {
-            const rect = cubeWrapper.getBoundingClientRect();
-            const centerX = rect.left + rect.width / 2;
-            const centerY = rect.top + rect.height / 2;
-            const relativeX = (e.clientX - centerX) / (rect.width / 2);
-            const relativeY = (e.clientY - centerY) / (rect.height / 2);
-            cube.style.transform = `rotateY(${relativeX * 20}deg) rotateX(${-relativeY * 20}deg)`;
+        // Implement rotation on scroll
+        gsap.to(cube, {
+            scrollTrigger: {
+                trigger: cubeWrapper,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 1,
+            },
+            rotateY: 360,
+            rotateX: 360,
+            ease: "none"
         });
-        cubeWrapper.addEventListener('mouseleave', () => {
-            cube.style.transform = 'rotateY(2deg) rotateX(2deg)';
-        });
+        
+        // Removed mouse interaction to avoid conflict with scroll rotation
     }
 
     window.initAnimations = initAnimations;
